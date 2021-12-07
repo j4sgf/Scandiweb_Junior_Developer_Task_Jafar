@@ -48,7 +48,7 @@ $db = new database();
           </div>
           <div class="mb-3">
             <label for="productType" class="form-label">Type</label>
-            <select class="form-select" id="productType">
+            <select class="form-select" id="productType" name="productType">
               <option selected>Select Product Type</option>
               <option value="disc_detail">DVD</option>
               <option value="furniture_detail">Furniture</option>
@@ -58,31 +58,31 @@ $db = new database();
           <div id="disc_detail" class="option-target" hidden>
             <label for="size" class="form-label">Size</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="size">
+              <input type="number" class="form-control" id="size" name="disc_size">
               <span class="input-group-text">mb</span>
             </div>
           </div>
           <div id="furniture_detail" class="option-target" hidden>
             <label for="height" class="form-label">Height</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="height">
+              <input type="number" class="form-control" id="height" name="height">
               <span class="input-group-text">cm</span>
             </div>
             <label for="width" class="form-label">Width</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="width">
+              <input type="number" class="form-control" id="width" name="width">
               <span class="input-group-text">cm</span>
             </div>
             <label for="length" class="form-label">Length</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="width">
+              <input type="number" class="form-control" id="length" name="length">
               <span class="input-group-text">cm</span>
             </div>
           </div>
           <div id="book_detail" class="option-target" hidden>
             <label for="weight" class="form-label">Weight</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="weight">
+              <input type="number" class="form-control" id="weight" name="weight">
               <span class="input-group-text">gr</span>
             </div>
           </div>

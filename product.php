@@ -1,32 +1,56 @@
 <?php
 include ("db_conn.php");
 
-class product_list {
+abstract class product_list {
   public $product_id;
   public $product_sku;
   public $product_name;
   public $product_price;
 
-  function __construct($product_sku, $product_name, $product_price) {
+  public function __construct($product_sku, $product_name, $product_price) {
     $this->product_sku = $product_sku;
     $this->product_name = $product_name;
     $this->product_price = $product_price;
-    $this->insert_new_data();
     
   }
-  function get_product_id() {
-    return $this->product_id;
-  }
-  function get_product_sku() {
-    return $this->product_sku;
-  }
-  function get_product_name() {
-    return $this->product_name;
-  }
-  function get_product_price() {
-    return $this->product_price;
-  }
-  function insert_new_data(){
+  abstract public function get_product_id() ;
+  abstract public function get_product_sku() ;
+  abstract public function get_product_name() ;
+  abstract public function get_product_price() ;
+
+  abstract function insert_new_data();
+}
+
+class book extends product_list{
+    public $book_weight;
+    public $book_product_id;
+
+    public function __construct($product_sku, $product_name, $product_price, $book_weight) {
+        $this->product_sku = $product_sku;
+        $this->product_name = $product_name;
+        $this->product_price = $product_price;
+        $this->book_weight = $book_weight;
+        $this->insert_new_data();
+    }
+
+    function get_product_id() {
+        return $this->product_id;
+      }
+      function get_product_sku() {
+        return $this->product_sku;
+      }
+      function get_product_name() {
+        return $this->product_name;
+      }
+      function get_product_price() {
+        return $this->product_price;
+      }
+      function get_book_weight() {
+        return $this->book_weight;
+      }
+
+      function insert_new_data()
+  {
       $product_db = new database();
       $conn = $product_db->get_conn();
       $sql = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
@@ -35,20 +59,163 @@ class product_list {
         exit();
       }
       if ($conn->query($sql) === TRUE) {
+        $id = $conn -> insert_id;
+        $sql_book = "INSERT INTO book (book_weight, product_id) VALUES ('$this->book_weight', '$id')";
+       if ($conn->query($sql_book) === TRUE){
+        echo $this->book_weight;
+        echo $id;
         echo "New records created successfully";
+       }
+       else {
+        echo "Error1: " . $sql_book . "<br>" . $conn->error;
+       }
+        
       } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error2: " . $sql . "<br>" . $conn->error;
       }
+      $conn -> close();
 
   }
+
 }
 
-class book {
-    
+class disc extends product_list{
+    public $disc_size;
+    public $disc_product_id;
+
+    public function __construct($product_sku, $product_name, $product_price, $disc_size) {
+        $this->product_sku = $product_sku;
+        $this->product_name = $product_name;
+        $this->product_price = $product_price;
+        $this->disc_size = $disc_size;
+        $this->insert_new_data();
+    }
+
+    function get_product_id() {
+        return $this->product_id;
+      }
+      function get_product_sku() {
+        return $this->product_sku;
+      }
+      function get_product_name() {
+        return $this->product_name;
+      }
+      function get_product_price() {
+        return $this->product_price;
+      }
+      function get_disc_size() {
+        return $this->disc_size;
+      }
+
+      function insert_new_data()
+  {
+      $product_db = new database();
+      $conn = $product_db->get_conn();
+      $sql = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
+      if ($conn -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $conn -> connect_error;
+        exit();
+      }
+      if ($conn->query($sql) === TRUE) {
+        $id = $conn -> insert_id;
+        $sql_disc = "INSERT INTO disc (disc_size, product_id) VALUES ('$this->disc_size', '$id')";
+       if ($conn->query($sql_disc) === TRUE){
+        echo "New records created successfully";
+       }
+       else {
+        echo "Error1: " . $sql_disc . "<br>" . $conn->error;
+       }
+        
+      } else {
+        echo "Error2: " . $sql . "<br>" . $conn->error;
+      }
+      $conn -> close();
+
+  }
+
+}
+
+class furniture extends product_list{
+    public $height;
+    public $width;
+    public $length;
+    public $furniture_product_id;
+
+    public function __construct($product_sku, $product_name, $product_price, $height, $width, $length) {
+        $this->product_sku = $product_sku;
+        $this->product_name = $product_name;
+        $this->product_price = $product_price;
+        $this->height = $height;
+        $this->length = $length;
+        $this->width = $width;
+        $this->insert_new_data();
+    }
+
+    function get_product_id() {
+        return $this->product_id;
+      }
+      function get_product_sku() {
+        return $this->product_sku;
+      }
+      function get_product_name() {
+        return $this->product_name;
+      }
+      function get_product_price() {
+        return $this->product_price;
+      }
+      function get_height() {
+        return $this->height;
+      }
+      function get_length() {
+        return $this->length;
+      }
+      function get_width() {
+        return $this->width;
+      }
+
+      function insert_new_data()
+  {
+      $product_db = new database();
+      $conn = $product_db->get_conn();
+      $sql = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
+      if ($conn -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $conn -> connect_error;
+        exit();
+      }
+      if ($conn->query($sql) === TRUE) {
+        $id = $conn -> insert_id;
+        $sql_furniture = "INSERT INTO furniture (furniture_width, furniture_height, furniture_length, product_id) VALUES ('$this->width', '$this->height', '$this->length', '$id')";
+       if ($conn->query($sql_furniture) === TRUE){
+        echo "New records created successfully";
+       }
+       else {
+        echo "Error1: " . $sql_furniture . "<br>" . $conn->error;
+       }
+        
+      } else {
+        echo "Error2: " . $sql . "<br>" . $conn->error;
+      }
+      $conn -> close();
+  }
+
 }
 
 // $p_sku = $_POST['product_sku'];
 // $p_name = $_POST['product_name'];
 // $p_price = $_POST['product_price'];
-$new_entry = new product_list($_POST['product_sku'], $_POST['product_name'], $_POST['product_price']);
+// $new_book= new book($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['weight']);
+// $new_disc= new disc($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['disc_size']);
+// $new_furniture= new furniture($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['height'],$_POST['width'],$_POST['length']);
+switch ($_POST['productType']){
+    case "book_detail": 
+        $new_book= new book($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['weight']);
+        break;
+    case "disc_detail": 
+        new disc($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['disc_size']);
+        break;
+    case "furniture_detail": 
+        new furniture($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['height'],$_POST['width'],$_POST['length']);
+        break;
+}
+$conn -> close();
 ?>
