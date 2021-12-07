@@ -24,7 +24,6 @@
     currentOption = optionsList.value;
     currentTarget = document.getElementById(currentOption);
     currentField = document.getElementById(currentTarget);
-    console.log("sad: " + $(currentOption).find(fieldTarget) );
     if (currentTarget) {
       currentTarget.removeAttribute('hidden');
       $(currentTarget).find(fieldTarget).attr('required', true);

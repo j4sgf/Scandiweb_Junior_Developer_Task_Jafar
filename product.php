@@ -19,7 +19,7 @@ abstract class product_list {
   abstract public function get_product_name() ;
   abstract public function get_product_price() ;
 
-  abstract function insert_new_data();
+  abstract public function insert_new_data();
 }
 
 class book extends product_list{
@@ -37,21 +37,20 @@ class book extends product_list{
     function get_product_id() {
         return $this->product_id;
       }
-      function get_product_sku() {
+    function get_product_sku() {
         return $this->product_sku;
       }
-      function get_product_name() {
+    function get_product_name() {
         return $this->product_name;
       }
-      function get_product_price() {
+    function get_product_price() {
         return $this->product_price;
       }
-      function get_book_weight() {
+    function get_book_weight() {
         return $this->book_weight;
       }
 
-      function insert_new_data()
-  {
+    function insert_new_data() {
       $product_db = new database();
       $conn = $product_db->get_conn();
       $sql_product_insert = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
@@ -65,8 +64,10 @@ class book extends product_list{
        if ($conn->query($sql_book) === TRUE){
        
         echo "New records created successfully";
+        
        }
        else {
+        
         echo "Error1: " . $sql_book . "<br>" . $conn->error;
        }
         
@@ -74,8 +75,7 @@ class book extends product_list{
         echo "Error2: " . $sql_product_insert . "<br>" . $conn->error;
       }
       $conn -> close();
-
-  }
+    }
 
 }
 
@@ -94,21 +94,21 @@ class disc extends product_list{
     function get_product_id() {
         return $this->product_id;
       }
-      function get_product_sku() {
+    function get_product_sku() {
         return $this->product_sku;
       }
-      function get_product_name() {
+    function get_product_name() {
         return $this->product_name;
       }
-      function get_product_price() {
+    function get_product_price() {
         return $this->product_price;
       }
-      function get_disc_size() {
+    function get_disc_size() {
         return $this->disc_size;
       }
 
-      function insert_new_data()
-  {
+    function insert_new_data()
+    {
       $product_db = new database();
       $conn = $product_db->get_conn();
       $sql_product_insert = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
@@ -154,22 +154,22 @@ class furniture extends product_list{
     function get_product_id() {
         return $this->product_id;
       }
-      function get_product_sku() {
+    function get_product_sku() {
         return $this->product_sku;
       }
-      function get_product_name() {
+    function get_product_name() {
         return $this->product_name;
       }
-      function get_product_price() {
+    function get_product_price() {
         return $this->product_price;
       }
-      function get_height() {
+    function get_height() {
         return $this->height;
       }
-      function get_length() {
+    function get_length() {
         return $this->length;
       }
-      function get_width() {
+    function get_width() {
         return $this->width;
       }
 
@@ -185,7 +185,7 @@ class furniture extends product_list{
       if ($conn->query($sql_product_insert) === TRUE) {
         $id = $conn -> insert_id;
         $sql_furniture = "INSERT INTO furniture (furniture_width, furniture_height, furniture_length, product_id) VALUES ('$this->width', '$this->height', '$this->length', '$id')";
-       if ($conn->query($sql_furniture) === TRUE){
+        if ($conn->query($sql_furniture) === TRUE){
         echo "New records created successfully";
        }
        else {
@@ -214,5 +214,4 @@ switch ($_POST['productType']){
 }
 ;
 $conn -> close()
-
 ?>
