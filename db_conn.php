@@ -1,15 +1,24 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname ="product_list";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-/*if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";*/
+class database{
+ 
+	var $host = "localhost";
+	var $uname = "root";
+	var $pass = "root";
+	var $db = "product_list";
+ 
+	function __construct(){
+		$conn = new mysqli($this->host, $this->uname, $this->pass, $this->db);
+    $this->conn = $conn;
+ 
+		// if($conn){
+		// 	echo "Connection Success.";
+		// }else{
+		// 	echo "Connection Failed";
+		// }
+	}
+  function get_conn(){
+    return $this->conn;
+  }
+} 
+ 
 ?>
