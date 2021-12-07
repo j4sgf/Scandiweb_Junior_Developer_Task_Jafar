@@ -1,3 +1,6 @@
+<?php
+?>
+
 <div class="container overflow-hidden sticky-top">
   <div class="row g-3 justify-content-start m-1 ">
     <div class="col-lg-12 shadow p-0 mb-0 bg-body rounded p-0">

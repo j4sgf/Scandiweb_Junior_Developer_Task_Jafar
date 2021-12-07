@@ -1,7 +1,4 @@
 <?php 
-include '../db_conn.php';
-$db = new database();
-
 ?>
 
 <head>
@@ -36,20 +33,20 @@ $db = new database();
         <form action="../product.php" method="POST">
           <div class="mb-3">
             <label for="sku" class="form-label">SKU</label>
-            <input type="text" class="form-control" id="sku" name="product_sku">
+            <input type="text" class="form-control" id="sku" name="product_sku" required>
           </div>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="product_name">
+            <input type="text" class="form-control" id="name" name="product_name" required>
           </div>
           <label for="price" class="form-label">Price</label>
           <div class="input-group mb-3"> <span class="input-group-text">$</span>
-            <input type="number" class="form-control" id="price" name="product_price">
+            <input type="number" class="form-control" id="price" name="product_price" required>
           </div>
           <div class="mb-3">
             <label for="productType" class="form-label">Type</label>
-            <select class="form-select" id="productType" name="productType">
-              <option selected>Select Product Type</option>
+            <select class="form-select" id="productType" name="productType" required>
+              <option value="" disabled selected>Select Product Type</option>
               <option value="disc_detail">DVD</option>
               <option value="furniture_detail">Furniture</option>
               <option value="book_detail">Book</option>
@@ -58,31 +55,31 @@ $db = new database();
           <div id="disc_detail" class="option-target" hidden>
             <label for="size" class="form-label">Size</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="size" name="disc_size">
+              <input type="number" class="form-control field-target" id="size" name="disc_size" required> 
               <span class="input-group-text">mb</span>
             </div>
           </div>
           <div id="furniture_detail" class="option-target" hidden>
             <label for="height" class="form-label">Height</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="height" name="height">
+              <input type="number" class="form-control field-target" id="height" name="height" required >
               <span class="input-group-text">cm</span>
             </div>
             <label for="width" class="form-label">Width</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="width" name="width">
+              <input type="number" class="form-control field-target" id="width" name="width" required >
               <span class="input-group-text">cm</span>
             </div>
             <label for="length" class="form-label">Length</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="length" name="length">
+              <input type="number" class="form-control field-target" id="length" name="length" required >
               <span class="input-group-text">cm</span>
             </div>
           </div>
           <div id="book_detail" class="option-target" hidden>
             <label for="weight" class="form-label">Weight</label>
             <div class="input-group mb-3">
-              <input type="number" class="form-control" id="weight" name="weight">
+              <input type="number" class="form-control field-target" id="weight" name="weight" required >
               <span class="input-group-text">gr</span>
             </div>
           </div>
@@ -97,6 +94,7 @@ $db = new database();
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
   <script type="text/javascript" src="../js/script.js"></script>
 </body>
 

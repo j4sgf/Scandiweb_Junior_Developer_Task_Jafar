@@ -1,5 +1,6 @@
 <?php
 include ("db_conn.php");
+include ("constant.php");
 
 abstract class product_list {
   public $product_id;
@@ -53,17 +54,16 @@ class book extends product_list{
   {
       $product_db = new database();
       $conn = $product_db->get_conn();
-      $sql = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
+      $sql_product_insert = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
       if ($conn -> connect_errno) {
         echo "Failed to connect to MySQL: " . $conn -> connect_error;
         exit();
       }
-      if ($conn->query($sql) === TRUE) {
+      if ($conn->query($sql_product_insert) === TRUE) {
         $id = $conn -> insert_id;
         $sql_book = "INSERT INTO book (book_weight, product_id) VALUES ('$this->book_weight', '$id')";
        if ($conn->query($sql_book) === TRUE){
-        echo $this->book_weight;
-        echo $id;
+       
         echo "New records created successfully";
        }
        else {
@@ -71,7 +71,7 @@ class book extends product_list{
        }
         
       } else {
-        echo "Error2: " . $sql . "<br>" . $conn->error;
+        echo "Error2: " . $sql_product_insert . "<br>" . $conn->error;
       }
       $conn -> close();
 
@@ -111,12 +111,12 @@ class disc extends product_list{
   {
       $product_db = new database();
       $conn = $product_db->get_conn();
-      $sql = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
+      $sql_product_insert = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
       if ($conn -> connect_errno) {
         echo "Failed to connect to MySQL: " . $conn -> connect_error;
         exit();
       }
-      if ($conn->query($sql) === TRUE) {
+      if ($conn->query($sql_product_insert) === TRUE) {
         $id = $conn -> insert_id;
         $sql_disc = "INSERT INTO disc (disc_size, product_id) VALUES ('$this->disc_size', '$id')";
        if ($conn->query($sql_disc) === TRUE){
@@ -127,7 +127,7 @@ class disc extends product_list{
        }
         
       } else {
-        echo "Error2: " . $sql . "<br>" . $conn->error;
+        echo "Error2: " . $sql_product_insert . "<br>" . $conn->error;
       }
       $conn -> close();
 
@@ -177,12 +177,12 @@ class furniture extends product_list{
   {
       $product_db = new database();
       $conn = $product_db->get_conn();
-      $sql = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
+      $sql_product_insert = "INSERT INTO product_list (product_sku, product_name, product_price) VALUES ('$this->product_sku', '$this->product_name', '$this->product_price')";
       if ($conn -> connect_errno) {
         echo "Failed to connect to MySQL: " . $conn -> connect_error;
         exit();
       }
-      if ($conn->query($sql) === TRUE) {
+      if ($conn->query($sql_product_insert) === TRUE) {
         $id = $conn -> insert_id;
         $sql_furniture = "INSERT INTO furniture (furniture_width, furniture_height, furniture_length, product_id) VALUES ('$this->width', '$this->height', '$this->length', '$id')";
        if ($conn->query($sql_furniture) === TRUE){
@@ -193,19 +193,14 @@ class furniture extends product_list{
        }
         
       } else {
-        echo "Error2: " . $sql . "<br>" . $conn->error;
+        echo "Error2: " . $sql_product_insert . "<br>" . $conn->error;
       }
       $conn -> close();
   }
 
 }
 
-// $p_sku = $_POST['product_sku'];
-// $p_name = $_POST['product_name'];
-// $p_price = $_POST['product_price'];
-// $new_book= new book($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['weight']);
-// $new_disc= new disc($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['disc_size']);
-// $new_furniture= new furniture($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['height'],$_POST['width'],$_POST['length']);
+
 switch ($_POST['productType']){
     case "book_detail": 
         $new_book= new book($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['weight']);
@@ -217,5 +212,7 @@ switch ($_POST['productType']){
         new furniture($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['height'],$_POST['width'],$_POST['length']);
         break;
 }
-$conn -> close();
+;
+$conn -> close()
+
 ?>
