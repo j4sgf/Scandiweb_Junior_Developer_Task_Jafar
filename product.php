@@ -1,6 +1,7 @@
 <?php
 include ("db_conn.php");
 include ("constant.php");
+header('Location: ../webstore/index.php');
 
 abstract class product_list {
   public $product_id;
@@ -62,8 +63,8 @@ class book extends product_list{
         $id = $conn -> insert_id;
         $sql_book = "INSERT INTO book (book_weight, product_id) VALUES ('$this->book_weight', '$id')";
        if ($conn->query($sql_book) === TRUE){
-       
         echo "New records created successfully";
+       
         
        }
        else {

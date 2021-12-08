@@ -29,8 +29,8 @@
   </div>
   <div class="container overflow-hidden">
     <div class="row g-3 justify-content-start m-1 ">
-      <div class="col-lg-4 shadow p-3 mb-5 bg-body rounded p-4">
-        <form action="../product.php" method="POST">
+      <div class="col-lg-4 shadow p-3  bg-body rounded p-4">
+        <form action="../product.php" method="POST" id=product_form>
           <div class="mb-3">
             <label for="sku" class="form-label">SKU</label>
             <input type="text" class="form-control" id="sku" name="product_sku" required>
@@ -54,9 +54,12 @@
           </div>
           <div id="disc_detail" class="option-target" hidden>
             <label for="size" class="form-label">Size</label>
-            <div class="input-group mb-3">
-              <input type="number" class="form-control field-target" id="size" name="disc_size" required> 
-              <span class="input-group-text">mb</span>
+            <div class="input-group ">
+              <input type="number" class="form-control field-target" id="size" name="disc_size" aria-describedby="discHelpInline" required> 
+              <span class="input-group-text">MB</span>
+            </div>
+            <div id="discHelpBlock" class="form-text mb-3">
+              Please provide size.
             </div>
           </div>
           <div id="furniture_detail" class="option-target" hidden>
@@ -71,16 +74,22 @@
               <span class="input-group-text">cm</span>
             </div>
             <label for="length" class="form-label">Length</label>
-            <div class="input-group mb-3">
-              <input type="number" class="form-control field-target" id="length" name="length" required >
+            <div class="input-group ">
+              <input type="number" class="form-control field-target" id="length" name="length" aria-describedby="dimensionHelpInline" required >
               <span class="input-group-text">cm</span>
+            </div>
+            <div id="dimensionHelpBlock" class="form-text mb-3">
+              Please provide dimension.
             </div>
           </div>
           <div id="book_detail" class="option-target" hidden>
             <label for="weight" class="form-label">Weight</label>
-            <div class="input-group mb-3">
-              <input type="number" class="form-control field-target" id="weight" name="weight" required >
-              <span class="input-group-text">gr</span>
+            <div class="input-group">
+              <input type="number" class="form-control field-target" id="weight" name="weight" aria-describedby="weightHelpInline" required >
+              <span class="input-group-text">Kg</span>
+            </div>
+            <div id="weightHelpBlock" class="form-text mb-3">
+              Please provide weight.
             </div>
           </div>
           <div>
