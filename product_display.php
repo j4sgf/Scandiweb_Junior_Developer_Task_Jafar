@@ -36,16 +36,16 @@ class product_box {
             // echo "<div class='row row-cols-4 g-1 justify-content-start m-1 '>";
             echo "<div class='col-12 shadow mb-5 bg-body rounded p-4 overflow-auto justify-content-center align-item-center' style='min-height: 250px;'>";
             echo "<div class='form-check'>";
-            echo "<input class='form-check-input' name='displayboxcheck' id='displayboxcheck' type='checkbox' value='$row[1]' id='$row[0]'>";
+            echo "<input class='form-check-input' name='displayboxcheck' id='displayboxcheck' type='checkbox' value='$row[0]'>";
             echo "</div>";
             echo "<p class='text-center'>$row[1] </p>"; //this shows the product SKU
             echo "<p class='text-center'>$row[2] </p>";//this shows the product NAME
             echo "<p class='text-center'>$row[3] &#36</p>";//this shows the product PRICE
             if (!empty($row[4])) {
-                echo "<p class='text-center'>Size: $row[4] KG</p>"; //this shows the book WEIGHT
+                echo "<p class='text-center'>Weight: $row[4] KG</p>"; //this shows the book WEIGHT
             }
             if (!empty($row[5])) {
-                echo "<p class='text-center'>Weight: $row[5] MB</p>";//this shows the disc SIZE
+                echo "<p class='text-center'>Size: $row[5] MB</p>";//this shows the disc SIZE
             }
             if (!empty($row[6])) {
                 echo "<p class='text-center'>Dimension: $row[6] x $row[7] x $row[8]  </p>";//this shows the disc SIZE

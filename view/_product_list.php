@@ -1,6 +1,5 @@
 <?php
 include("./product_display.php");
-
 ?>
 <style>
     p:empty {
@@ -22,7 +21,7 @@ include("./product_display.php");
                                 <a class="btn btn-outline-success" aria-current="page" href="view/_add_product.php">Add</a>
                             </li>
                             <li class="nav-item me-2" >
-                                <button class="btn btn-danger" aria-current="page">Mass Delete</button>
+                                <button class="btn btn-danger" aria-current="page" id=delete_button>Delete</button>
                             </li>
                             <li class ="nav-item mt-1">
                             <div> <input type="checkbox" name='select-all' id='select-all'> Select All </div>
@@ -41,11 +40,17 @@ include("./product_display.php");
             
                 <?php
                 $display_box = new product_box();
-
+                if(isset($_POST['hash'])) {
+                    //run sql query saving what you need in your db and check if the insert/update was successful;
+                    // im naming my verification $result (a boolean)
+                    if ($result) echo 'ok';
+                    else echo 'error';
+                };
                 ?>
             </form>
         </div>
     </div>
+
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
