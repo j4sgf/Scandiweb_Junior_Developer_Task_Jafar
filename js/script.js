@@ -1,27 +1,26 @@
 // JavaScript 
 
-(function () {
+
   // Create variables
-  var optionsList = document.getElementById('productType'),
+  var 
+    // jklmn = document.getElementById('select-all'),
     allTargets = $('.option-target'),
     fieldTarget = $('.field-target'),
     currentOption,
     currentTarget;
-    
-  console.log(fieldTarget);
-  console.log(allTargets);
+  
   // Create Hide and Show Functionality
-  function hideShowTargets() {
-    console.log('coalagi');
+  $("#productType").change(function() {
+    console.log(fieldTarget);
+    console.log(allTargets);
     allTargets.each(function () {
-      $(this).attr('hidden', true);
-     
+      $(this).prop('hidden',true);
       fieldTarget.each(function (){
-        $(this).removeAttr('required');
+        $(this).prop('required', false);
       }
       )
     });
-    currentOption = optionsList.value;
+    currentOption = $("#productType").val();
     currentTarget = document.getElementById(currentOption);
     currentField = document.getElementById(currentTarget);
     if (currentTarget) {
@@ -29,7 +28,10 @@
       $(currentTarget).find(fieldTarget).attr('required', true);
     
     }
-  }
-  // Add event listener
-  optionsList.addEventListener('change', hideShowTargets);
-})();
+  });
+
+$("#select-all").change(function(){
+  $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+

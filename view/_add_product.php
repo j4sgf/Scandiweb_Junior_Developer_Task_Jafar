@@ -30,7 +30,7 @@
   <div class="container overflow-hidden">
     <div class="row g-3 justify-content-start m-1 ">
       <div class="col-lg-4 shadow p-3  bg-body rounded p-4">
-        <form action="../product.php" method="POST" id=product_form>
+        <form action="../product_save.php" method="POST" id=product_form>
           <div class="mb-3">
             <label for="sku" class="form-label">SKU</label>
             <input type="text" class="form-control" id="sku" name="product_sku" required>

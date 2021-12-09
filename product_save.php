@@ -19,8 +19,8 @@ abstract class product_list {
   abstract public function get_product_sku() ;
   abstract public function get_product_name() ;
   abstract public function get_product_price() ;
-
   abstract public function insert_new_data();
+  
 }
 
 class book extends product_list{
@@ -32,7 +32,7 @@ class book extends product_list{
         $this->product_name = $product_name;
         $this->product_price = $product_price;
         $this->book_weight = $book_weight;
-        $this->insert_new_data();
+        // $this->insert_new_data();
     }
 
     function get_product_id() {
@@ -89,7 +89,7 @@ class disc extends product_list{
         $this->product_name = $product_name;
         $this->product_price = $product_price;
         $this->disc_size = $disc_size;
-        $this->insert_new_data();
+        // $this->insert_new_data();
     }
 
     function get_product_id() {
@@ -149,7 +149,7 @@ class furniture extends product_list{
         $this->height = $height;
         $this->length = $length;
         $this->width = $width;
-        $this->insert_new_data();
+        // $this->insert_new_data();
     }
 
     function get_product_id() {
@@ -202,17 +202,24 @@ class furniture extends product_list{
 }
 
 
+
+
+
 switch ($_POST['productType']){
     case "book_detail": 
-        $new_book= new book($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['weight']);
+        $new_book = new book($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['weight']);
+        $new_book->insert_new_data();
         break;
     case "disc_detail": 
-        new disc($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['disc_size']);
+        $new_disc = new disc($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['disc_size']);
+        $new_disc->insert_new_data();
+        
         break;
     case "furniture_detail": 
-        new furniture($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['height'],$_POST['width'],$_POST['length']);
+        $new_furniture = new furniture($_POST['product_sku'], $_POST['product_name'], $_POST['product_price'],$_POST['height'],$_POST['width'],$_POST['length']);
+        $new_furniture->insert_new_data();
         break;
 }
 ;
-$conn -> close()
+$conn -> close();
 ?>
