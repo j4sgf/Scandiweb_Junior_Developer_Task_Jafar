@@ -43,13 +43,14 @@ $("#delete_button").click(function () {
     data_id.push($(this).val());
   })
   request = $.ajax({
-    url: "./product_delete.php",
+    url: "./handler/delete_handler.php",
     type: "POST",
-    data: data_id,
-      
+    data: {
+      data_id:data_id
+    },
     success: function (data) {
-      alert(data);
-      window.location.reload();
+      // alert(data);
+      location.reload();
       
       // You will get response from your PHP page (what you echo or print)
    },

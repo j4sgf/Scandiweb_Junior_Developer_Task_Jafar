@@ -1,12 +1,3 @@
-<style>
-p {
-    font-family: 'Work Sans'; font-size: 16px;
-  }
-p:empty{
-    display : none
-}
-  </style>
-
 
 <?php
 include ('db_conn.php');
@@ -14,12 +5,12 @@ include ('db_conn.php');
 
 
 class product_box {
-    public function __construct(){
+    public function create_box(){
         $show_product = new database();
         $conn = $show_product->get_conn();
         $sql_product_show = "SELECT product_list.product_id, product_list.product_sku, product_list.product_name, product_list.product_price,
         book.book_weight, disc.disc_size, furniture.furniture_height, furniture.furniture_width, furniture.furniture_length FROM product_list LEFT JOIN book ON product_list.product_id = book.product_id
-        LEFT JOIN disc ON product_list.product_id = disc.product_id LEFT JOIN furniture ON product_list.product_id = furniture.product_id";
+        LEFT JOIN disc ON product_list.product_id = disc.product_id LEFT JOIN furniture ON product_list.product_id = furniture.product_id ORDER BY product_list.product_id ASC";
         // if ($conn -> connect_errno) {
         //   echo "Failed to connect to MySQL: " . $conn -> connect_error;
         //   exit();
@@ -32,9 +23,9 @@ class product_box {
         echo "<div class='row justify-content-start row-cols-2  row-cols-sm-2 row-cols-md-3 row-cols-lg-4 align-items-start'>";
         while ($row = mysqli_fetch_row($result)) {
           
-            echo "<div class='container-lg'>";
+            echo "<div class='container-lg overflow-auto'>";
             // echo "<div class='row row-cols-4 g-1 justify-content-start m-1 '>";
-            echo "<div class='col-12 shadow mb-5 bg-body rounded p-4 overflow-auto justify-content-center align-item-center' style='min-height: 250px;'>";
+            echo "<div class='col-12 shadow mb-5 bg-body rounded p-4 overflow-auto justify-content-center align-item-center' style='min-height: 260px;'>";
             echo "<div class='form-check'>";
             echo "<input class='form-check-input' name='displayboxcheck' id='displayboxcheck' type='checkbox' value='$row[0]'>";
             echo "</div>";
@@ -61,14 +52,28 @@ class product_box {
         echo "</div>";
 
 
-        $conn->close();
-
-      
+        $conn->close();      
     }
-    public function delete_data(){
 
-
-
+    public function product_delete($data_id){
+        $id = [];
+        $db = new database();
+        $id = $data_id;
+        $conn = $db->get_conn();
+        foreach ($id as $product_id){
+            
+            $sql_delete = "DELETE FROM product_list WHERE product_list.product_id = $product_id";
+        
+            if ($conn->query($sql_delete) === TRUE){
+        
+               }
+               else {
+                echo "Error1: " . $sql_delete . "<br>" . $conn->error;
+               }
+        }
+        
+        $conn->close();
+        exit; 
     }
 }
 

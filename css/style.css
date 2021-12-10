@@ -1,6 +1,6 @@
 @charset "UTF-8";
-p {
-    font-family: "Sofia", sans-serif;
+p * {
+    font-family: 'Work Sans'; font-size: 16px;
   }
 
 

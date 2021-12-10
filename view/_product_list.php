@@ -35,17 +35,12 @@ include("./product_display.php");
 
 <div class="container overflow-hidden">
     <div class="row  justify-content-start align-items-start m-1 ">
-        <div class="col-md-12 shadow mb-5 bg-body rounded p-4">
+        <div class="col-md-12 shadow mb-5 bg-body rounded p-4" style="min-height: 100vh;">
             <form>
             
                 <?php
                 $display_box = new product_box();
-                if(isset($_POST['hash'])) {
-                    //run sql query saving what you need in your db and check if the insert/update was successful;
-                    // im naming my verification $result (a boolean)
-                    if ($result) echo 'ok';
-                    else echo 'error';
-                };
+                $display_box->create_box();
                 ?>
             </form>
         </div>
