@@ -20,14 +20,14 @@ class product_box {
         // }
         $result =  $conn->query($sql_product_show);
         // echo "Error2: " . $sql_product_show . "<br>" . $conn->error;
-        echo "<div class='row justify-content-start row-cols-2  row-cols-sm-2 row-cols-md-3 row-cols-lg-4 align-items-start'>";
-        while ($row = mysqli_fetch_row($result)) {
-          
+        echo "<div class='row justify-content-start row-cols-2  row-cols-sm-2 row-cols-md-3 row-cols-lg-4 align-items-start' id='allProducts'>";
+        while ($row = mysqli_fetch_array($result)) {
+    
+        
             echo "<div class='container-lg overflow-auto'>";
-            // echo "<div class='row row-cols-4 g-1 justify-content-start m-1 '>";
             echo "<div class='col-12 shadow mb-5 bg-body rounded p-4 overflow-auto justify-content-center align-item-center' style='min-height: 260px;'>";
             echo "<div class='form-check'>";
-            echo "<input class='form-check-input' name='displayboxcheck' id='displayboxcheck' type='checkbox' value='$row[0]'>";
+            echo "<input class='form-check-input delete-checkbox' name='displayboxcheck' id='delete-checkbox' type='checkbox' value='$row[0]'>";
             echo "</div>";
             echo "<p class='text-center'>$row[1] </p>"; //this shows the product SKU
             echo "<p class='text-center'>$row[2] </p>";//this shows the product NAME

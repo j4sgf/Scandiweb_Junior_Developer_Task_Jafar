@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body style="background-color: #EAECEF;">
+<body>
   <div class="container overflow-hidden sticky-top">
     <div class="row g-3 justify-content-start m-1 ">
       <div class="col-lg-12 shadow p-0 mb-0 bg-body rounded p-0">
@@ -41,7 +41,7 @@
           </div>
           <label for="price" class="form-label">Price</label>
           <div class="input-group mb-3"> <span class="input-group-text">$</span>
-            <input type="number" class="form-control" id="price" name="product_price" required>
+            <input type="number" class="form-control" id="price" name="product_price" step="0.01" required>
           </div>
           <div class="mb-3">
             <label for="productType" class="form-label">Type</label>
@@ -55,7 +55,7 @@
           <div id="disc_detail" class="option-target" hidden>
             <label for="size" class="form-label">Size</label>
             <div class="input-group ">
-              <input type="number" class="form-control field-target" id="size" name="disc_size" aria-describedby="discHelpInline" required> 
+              <input type="number" class="form-control field-target" id="size" name="disc_size" aria-describedby="discHelpInline" step="0.01" required> 
               <span class="input-group-text">MB</span>
             </div>
             <div id="discHelpBlock" class="form-text mb-3">
@@ -85,7 +85,7 @@
           <div id="book_detail" class="option-target" hidden>
             <label for="weight" class="form-label">Weight</label>
             <div class="input-group">
-              <input type="number" class="form-control field-target" id="weight" name="weight" aria-describedby="weightHelpInline" required >
+              <input type="number" class="form-control field-target" id="weight" name="weight" aria-describedby="weightHelpInline" step="0.01" required >
               <span class="input-group-text">Kg</span>
             </div>
             <div id="weightHelpBlock" class="form-text mb-3">
@@ -103,6 +103,7 @@
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
   <script type="text/javascript" src="../js/script.js"></script>
 </body>
 

@@ -1,4 +1,4 @@
-// JavaScript 
+// Vue
 
 
 // Create variables
@@ -11,7 +11,7 @@ var
   request,
   firstName = 'aSUW',
   currentTarget;
-
+  
 // Create Hide and Show Functionality
 $("#productType").change(function () {
   console.log(fieldTarget);
@@ -38,8 +38,8 @@ $("#select-all").change(function () {
 });
 
 $(document).ready(function() {
-$("#delete_button").click(function () {
-  $('#displayboxcheck:checked').each(function () {
+$("#delete-product-btn").click(function () {
+  $('#delete-checkbox:checked').each(function () {
     data_id.push($(this).val());
   })
   request = $.ajax({
@@ -49,10 +49,10 @@ $("#delete_button").click(function () {
       data_id:data_id
     },
     success: function (data) {
+      $("#allProducts").load("./handler/delete_handler.php");
       // alert(data);
-      location.reload();
+    //   window.location.reload();
       
-      // You will get response from your PHP page (what you echo or print)
    },
    error: function(jqXHR, textStatus, errorThrown) {
     console.log(textStatus, errorThrown);

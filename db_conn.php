@@ -8,7 +8,7 @@ class database{
  
 	function __construct(){
 		$conn = new mysqli($this->host, $this->uname, $this->pass, $this->db);
-    $this->conn = $conn;
+    	$this->conn = $conn;
  
 		// if($conn){
 		// 	echo "Connection Success.";

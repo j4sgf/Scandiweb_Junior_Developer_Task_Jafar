@@ -15,6 +15,7 @@ switch ($_POST['productType']){
         $new_furniture->insert_new_data();
         break;
 }
+header('Location: ../index.php');
+exit();
 ;
-$conn -> close();
 ?>
