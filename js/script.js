@@ -49,7 +49,7 @@ $("#delete-product-btn").click(function () {
       data_id:data_id
     },
     success: function (data) {
-      $("#allProducts").load("./handler/delete_handler.php");
+      $("#allProducts").load("../handler/delete_handler.php");
       // alert(data);
     //   window.location.reload();
       
